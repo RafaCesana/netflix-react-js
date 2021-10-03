@@ -27,7 +27,8 @@ export default() =>
       <section className="lists">
         {movieList.map( (item,key) =>
         (
-          <MovieRow key={key} />
+          // Passing the title and items properties to MovieRow
+          <MovieRow key={key} title={item.title} items={item.items} />
         )
         )}
       </section>
