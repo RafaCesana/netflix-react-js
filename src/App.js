@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Tmdb from './Tmdb';
 
 export default() =>
 {
+
+  const [movieList, setMovieList] = useState([]);
 
   useEffect( 
     ()=>
@@ -11,7 +13,7 @@ export default() =>
       {
         // Tanking all the movies lists
         let list = await Tmdb.getHomeList();
-        console.log(list);
+        setMovieList(list);
       }
       loadAll();
     },
