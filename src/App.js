@@ -6,6 +6,7 @@ export default() =>
 
   const [movieList, setMovieList] = useState([]);
 
+  // Loading movies lists from API
   useEffect( 
     ()=>
     {
@@ -19,9 +20,18 @@ export default() =>
     },
     []);
 
+  // Visual part
   return (
-    <div>
-      first test
+    <div className="Page">
+      <section className="lists">
+        {movieList.map( (item,key) =>
+        (
+          <div>
+              {item.title}
+          </div>
+        )
+        )}
+      </section>
     </div>
   );
 }
