@@ -7,9 +7,9 @@ import Header from './components/Header';
 
 export default() =>
 {
-
   const [movieList, setMovieList] = useState([]);
   const [featuredData, setFeaturedData] = useState(null);
+  const [blackHeader, setBlackHeader] = useState(false);
 
   // Loading movies lists from API
   useEffect( 
@@ -30,11 +30,36 @@ export default() =>
       }
       loadAll();
     },
-    []);
+  []);
+
+  useEffect(
+    ()=>
+    {
+      const scrollListener = ()=>
+      {
+        if( window.scrollY > 10 )
+        {
+          setBlackHeader(true);
+        }
+        else
+        {
+          setBlackHeader(false);
+        }
+      }
+      window.addEventListener('scroll', scrollListener);
+
+      return() =>
+      {
+        window.removeEventListener('scroll', scrollListener);
+      }
+    },
+  []);
 
   // Visual part
   return(
     <div className="Page">
+
+      <Header black={blackHeader} />
 
       {featuredData &&
         <FeaturedMovie item={featuredData} />
