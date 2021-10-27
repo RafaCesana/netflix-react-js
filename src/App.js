@@ -80,6 +80,12 @@ export default() =>
         Dados pegos do site Themoviedb.org
       </footer>
 
+      {movieList.length <= 0 &&
+        <div className="loading">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_(wobbly).gif" alt="Carregando" />
+        </div>
+      }
+
     </div>
   );
 }
